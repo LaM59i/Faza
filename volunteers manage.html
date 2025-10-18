@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add / Edit Volunteer | Fazaa</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background-color: #f9fafb;
+      color: #333;
+      text-align: center;
+      margin: 0;
+      padding: 30px;
+    }
+
+    header {
+      background: linear-gradient(90deg, #0b3d2e 0%, #0f4c75 100%);
+      padding: 12px 0;
+      margin-bottom: 30px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 15px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    h2 {
+      color: #0f4c75;
+      margin-bottom: 20px;
+    }
+
+    form {
+      background: white;
+      width: 90%;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 25px 30px;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+
+    label {
+      font-weight: 500;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 8px 10px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .button {
+      display: block;
+      background-color: #0f4c75;
+      color: white;
+      padding: 8px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s, transform 0.2s;
+      width: 100%;
+      text-align: center;
+    }
+
+    .button:hover {
+      background-color: #0b3d2e;
+      transform: scale(1.03);
+    }
+
+    hr {
+      margin-top: 30px;
+      width: 80%;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav> 
+      <a href="Volunteer.html">Back to Volunteers</a>
+    </nav>
+  </header>
+
+  <h2>Add / Edit Volunteer</h2>
+
+  <form action="" method="post">
+    <label>Select Volunteer to Edit (Leave blank to add new):</label>
+    <select name="volunteer" onchange="fillForm(this.value)">
+      <option value="">-- New Volunteer --</option>
+      <option value="1">Example Name</option>
+      <option value="2">Another Name</option>
+    </select>
+
+    <label>Name:</label>
+    <input type="text" name="name" id="name">
+
+    <label>Student ID:</label>
+    <input type="text" name="studentID" id="studentID">
+
+    <label>Email:</label>
+    <input type="email" name="email" id="email">
+
+    <label>Password:</label>
+    <input type="password" name="password" id="password">
+
+    <label>College:</label>
+    <input type="text" name="college" id="college">
+
+    <label>Phone Number:</label>
+    <input type="text" name="phone" id="phone">
+
+    <label>Location:</label>
+    <input type="text" name="location" id="location">
+
+    <input type="submit" value="Save / Add Volunteer" class="button">
+  </form>
+
+  <hr>
+ <script src="script.js"></script>
+ 
+</body>
+</html>

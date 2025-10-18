@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>View Volunteers</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h2>Volunteers List</h2>
+<header>
+  
+    <nav> 
+     <a href="Volunteer.html">Back to Volunteers</a>
+	  </nav>
+  </header> 
+
+  <!-- زر إضافة متطوع جديد -->
+  <a href="volunteers manage.html" class="button" style="margin-bottom: 20px; display: inline-block;">Add New Volunteer</a>
+
+  <!-- جدول عرض المتطوعين -->
+  <table border="1" cellpadding="5" width="100%">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>ID</th>
+        <th>Email</th>
+        <th>College</th>
+        <th>Phone</th>
+        <th>Hours</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="volunteerTable">
+      <tr>
+        <td>Example Name</td>
+        <td>12345</td>
+        <td>example@email.com</td>
+        <td>Science</td>
+        <td>0501234567</td>
+        <td>10</td>
+        <td>
+          <a href="volunteers manage.html"class="button">Edit</a>
+          <a href="Delete Volunteer.html" class="button">Delete</a>
+        </td>
+      </tr>
+      <!-- يمكن تكرار الصفوف لكل متطوع -->
+    </tbody>
+  </table>
+
+  <hr>
+
+  
+</body>
+  <script src="script.js"></script>
+
+</html>
