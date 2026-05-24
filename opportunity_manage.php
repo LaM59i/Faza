@@ -1,6 +1,28 @@
 <?php
 include 'database.php';
 
+// تحديث الحالات تلقائياً حسب التاريخ
+$conn->query("
+UPDATE opportunities
+SET status = 'منتهية'
+WHERE end_date < CURDATE()
+");
+
+$conn->query("
+UPDATE opportunities
+SET status = 'قادمة'
+WHERE start_date > CURDATE()
+AND status != 'منتهية'
+");
+
+$conn->query("
+UPDATE opportunities
+SET status = 'متاحة'
+WHERE start_date <= CURDATE()
+AND end_date >= CURDATE()
+AND status != 'منتهية'
+");
+
 // إذا فيه id نجيب بيانات الفرصة للتعديل
 $opportunity = null;
 
@@ -115,7 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 
 <head>
 
@@ -159,6 +181,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 </nav>
 
+<br>
+
 <nav>
 
 <a href="view_opportunities.php">
@@ -170,6 +194,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </nav>
 
 </header>
+
+<div class="container">
+
+<div class="card">
 
 <h1>
 
@@ -230,7 +258,7 @@ rows="4"
 required><?= htmlspecialchars($opportunity['description'] ?? ''); ?></textarea>
 
 <label>
-عدد المتطوعين:
+العدد المطلوب من المتطوعين:
 </label>
 
 <input
@@ -250,30 +278,30 @@ value="<?= htmlspecialchars($opportunity['hours'] ?? ''); ?>"
 required>
 
 <label>
-الحالة:
+حالة الفرصة:
 </label>
 
 <select name="status" required>
 
 <option
-value="coming"
-<?= (!empty($opportunity['status']) && $opportunity['status'] == 'coming') ? 'selected' : ''; ?>>
+value="قادمة"
+<?= (!empty($opportunity['status']) && $opportunity['status'] == 'قادمة') ? 'selected' : ''; ?>>
 
 قادمة
 
 </option>
 
 <option
-value="active"
-<?= (!empty($opportunity['status']) && $opportunity['status'] == 'active') ? 'selected' : ''; ?>>
+value="متاحة"
+<?= (!empty($opportunity['status']) && $opportunity['status'] == 'متاحة') ? 'selected' : ''; ?>>
 
-نشطة
+متاحة
 
 </option>
 
 <option
-value="ended"
-<?= (!empty($opportunity['status']) && $opportunity['status'] == 'ended') ? 'selected' : ''; ?>>
+value="منتهية"
+<?= (!empty($opportunity['status']) && $opportunity['status'] == 'منتهية') ? 'selected' : ''; ?>>
 
 منتهية
 
@@ -281,12 +309,18 @@ value="ended"
 
 </select>
 
+<br><br>
+
 <input
 type="submit"
 value="<?= $opportunity ? 'حفظ التعديلات' : 'إضافة الفرصة'; ?>"
 class="button">
 
 </form>
+
+</div>
+
+</div>
 
 </body>
 
